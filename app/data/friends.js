@@ -1,7 +1,7 @@
 var friends = [
     {
-      name: "Rusty Shackleford",
-      photo: "https://via.placeholder.com/350x350",
+      name: "Johnny Fiveaces",
+      photo: "https://i.imgur.com/HKnBR01.jpg",
       scores: [
         "5", 
         "5",
@@ -15,8 +15,8 @@ var friends = [
         "5"]
     },
     {
-      name: "Slippy",
-      photo: "https://via.placeholder.com/350x350",
+      name: "Rusty Shackleford",
+      photo: "https://i.imgur.com/VDtEn9w.jpg",
       scores: [
         "4", 
         "4",
@@ -30,8 +30,8 @@ var friends = [
         "4"]
     },
     {
-      name: "Testy McTestFace",
-      photo: "https://via.placeholder.com/350x350",
+      name: "Slippy",
+      photo: "https://i.imgur.com/2zCW2h3.jpg",
       scores: [
         "3", 
         "3",
@@ -45,7 +45,7 @@ var friends = [
         "3"]
     },
     {
-      name: "Deuces",
+      name: "JC Denton",
       photo: "https://via.placeholder.com/350x350",
       scores: [
         "2", 
@@ -58,6 +58,21 @@ var friends = [
         "2",
         "2",
         "2"]
+    },
+    {
+      name: "Hal Emmerich",
+      photo: "https://i.imgur.com/PSHNXHE.jpg",
+      scores: [
+        "1", 
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"]
     },
   ];
 
