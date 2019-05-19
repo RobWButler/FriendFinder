@@ -46,7 +46,7 @@ var friends = [
     },
     {
       name: "JC Denton",
-      photo: "https://via.placeholder.com/350x350",
+      photo: "https://i.imgur.com/smHi7Aq.png",
       scores: [
         "2", 
         "2",

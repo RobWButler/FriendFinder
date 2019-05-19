@@ -145,10 +145,10 @@
             </div>
             <br>
 
-            <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-check-circle" aria-hidden="true"></i>Submit</button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>Submit</button>
 
             
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="matchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-body">
@@ -167,26 +167,60 @@
 
 </body>
 <script type="text/javascript">
+    var checked = "";
+    var selectValid = "";
     $("#submit").on("click", function(event) {
       event.preventDefault();
+ 
 
+      function formCheck(){
+        ($(":input").each(function() {
+          if ($(this).val() === ""){
+            checked = false
+          }
+          else {
+            selectValid = true;
+          }
+        }))
+
+        if ($("#name").val() === "") {
+          alert("Please enter your name.");
+          checked = false
+        } 
+
+        else if ($("#photo").val() === "") {
+          alert("Please enter a link to a photo.");
+          checked = false
+        }
+        else if (!selectValid){
+          alert("Please answer all questions.")
+        } else {
+          checked = true; 
+        }
+      }
+
+      formCheck();
+
+      if (checked) {
       const newFriend = {
         name: $("#name").val().trim(),
         photo: $("#photo").val().trim(),
         scores: [
-            $("#q1").val(),
-            $("#q2").val(),
-            $("#q3").val(),
-            $("#q4").val(),
-            $("#q5").val(),
-            $("#q6").val(),
-            $("#q7").val(),
-            $("#q8").val(),
-            $("#q9").val(),
-            $("#q10").val(),
+          $("#q1").val(),
+          $("#q2").val(),
+          $("#q3").val(),
+          $("#q4").val(),
+          $("#q5").val(),
+          $("#q6").val(),
+          $("#q7").val(),
+          $("#q8").val(),
+          $("#q9").val(),
+          $("#q10").val(),
         ]
       };
-      
+
+
+
       $.get("/api/friends", function(data){
         var matchCompare;
         var userscore = newFriend.scores
@@ -200,19 +234,22 @@
           }
           matchScores.push(matchCompare)
         }
-        
+        console.log(Math.min(...matchScores))
+        console.log(matchScores.indexOf(Math.min(...matchScores)))
         var bestMatch = matchScores.indexOf(Math.min(...matchScores))
 
         if (data){
           $("#match_name").text(data[bestMatch].name)
           $("#match_photo").attr("src", data[bestMatch].photo)
         }
-      })
 
-      $.post("/api/friends", newFriend)
+        $.post("/api/friends", newFriend)
         .then(function(data) {
           console.log("survey.html", data);
         });
+        $('#matchModal').modal('show');
+      })
+    }
 
 
 
